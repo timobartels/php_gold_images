@@ -17,7 +17,7 @@ for version in "${versions[@]}"; do
   docker run --rm local/php:"$version"
   OUTPUT=$(docker run --rm local/php:"$version" php --version 2>&1)
   if ! echo "$OUTPUT" | grep -q "$version"; then
-    echo "Test of $version failed!"
+    echo "Test of PHP$version failed!"
     exit 1
   fi
 done
