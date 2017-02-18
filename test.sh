@@ -14,7 +14,6 @@ versions=( "${versions[@]%/}" )
 for version in "${versions[@]}"; do
   [ -f "$version/Dockerfile" ] || continue
   docker build --rm -t local/php:"$version" "$version/."
-  docker run --rm local/php:"$version"
   OUTPUT=$(docker run --rm local/php:"$version" php --version 2>&1)
   if ! echo "$OUTPUT" | grep -q "$version"; then
     echo "Test of PHP$version failed!"
