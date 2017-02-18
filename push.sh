@@ -16,4 +16,5 @@ for version in "${versions[@]}"; do
     docker login --username=$docker_username --password=$docker_password
     docker push tbartels/php:"$version"
     docker rmi tbartels/php:"$version"
+    docker logout
 done
